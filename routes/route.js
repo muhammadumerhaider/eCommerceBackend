@@ -1,10 +1,10 @@
-const express = require("express")
-// import { Express } from "express";
+import express from "express";
+import Registration from "../models/registration.js"
+import Product from "../models/product.js";
+import Cart from "../models/cart.js";
+
 const router=express.Router();
 
-const Registration = require("../models/registration");
-const Product = require("../models/product")
-const Cart = require("../models/cart")
 
     // registration API's
 
@@ -232,4 +232,4 @@ router.patch("/updateCart",async(req,res)=>{    // + button in Add to cart
 })
     
 
-module.exports = router
+export default router;

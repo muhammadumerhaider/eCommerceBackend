@@ -1,17 +1,14 @@
-const express = require("express");
+import express from "express";
+import bodyParser from "body-parser";
+import connectDB from "./database/db.js";
+import router from './routes/route.js';
+
 const app = express();
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser")
+connectDB(); // db connection
 
+app.use(bodyParser.json());
 
-require("./database/db");
-
-app.use(bodyParser.json())
-app.use((req,res,next)=>{
-    console.log(req.method);
-    next()
-})
-app.use(require('./routes/route'));
+app.use(router);
 
 app.listen(3000,function(){
     console.log("Server is running...");

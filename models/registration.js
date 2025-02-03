@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from 'mongoose';
 
 const registerSchema = mongoose.Schema({
     email:{
@@ -16,4 +16,4 @@ const registerSchema = mongoose.Schema({
 })
 
 const Register = mongoose.model('Registration',registerSchema)
-module.exports = Register
+export default Register;
