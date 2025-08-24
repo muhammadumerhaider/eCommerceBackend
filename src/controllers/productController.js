@@ -1,10 +1,10 @@
-import Product from '../models/Product.js';
+import Product from "../models/Product.js";
 
 export const addProduct = async (req, res) => {
   const { name, description, price, imgURL, category } = req.body;
 
   if (!name) {
-    return res.json('Kindly fill out Product name.');
+    return res.json("Kindly fill out Product name.");
   }
 
   const addedProduct = new Product({
@@ -17,7 +17,7 @@ export const addProduct = async (req, res) => {
   addedProduct
     .save()
     .then(() => {
-      return res.json('Product added successfully.');
+      return res.json("Product added successfully.");
     })
     .catch((err) => {
       return res.json(err);
@@ -42,7 +42,7 @@ export const updateProduct = async (req, res) => {
     updatedProduct.category = req.body.category;
     return res.json(updatedProduct);
   } else {
-    return res.json('Product not updated.');
+    return res.json("Product not updated.");
   }
 };
 
@@ -55,6 +55,6 @@ export const deleteProduct = async (req, res) => {
       `Product with name ${deletedProduct.name} deleted successfully.`
     );
   } else {
-    return res.json('Product not deleted.');
+    return res.json("Product not deleted.");
   }
 };
