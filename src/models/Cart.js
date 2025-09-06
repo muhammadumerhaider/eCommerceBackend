@@ -1,16 +1,16 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const cartSchema = mongoose.Schema({
   userId: {
     type: String,
-    ref: "User",
+    ref: 'User',
     required: true,
   },
   items: [
     {
       productId: {
         type: String,
-        ref: "Product",
+        ref: 'Product',
         required: true,
       },
       quantity: {
@@ -26,7 +26,7 @@ const cartSchema = mongoose.Schema({
   ],
   totalPrice: {
     type: Number,
-    default : 0
+    default: 0,
   },
   isOrdered: {
     type: Boolean,
@@ -34,10 +34,13 @@ const cartSchema = mongoose.Schema({
   },
 });
 
-cartSchema.pre("save", function (next) {
-  this.totalPrice = this.items.reduce((acc, item) => acc + item.quantity * item.price, 0);
+cartSchema.pre('save', function (next) {
+  this.totalPrice = this.items.reduce(
+    (acc, item) => acc + item.quantity * item.price,
+    0
+  );
   next();
 });
 
-const Cart = mongoose.model("Cart", cartSchema);
+const Cart = mongoose.model('Cart', cartSchema);
 export default Cart;
